@@ -3,7 +3,7 @@ Dropzone.options.myDropzone = {
     var self = this;
     // config
     self.options.addRemoveLinks = true;
-    self.options.dictRemoveFile = "Delete";
+    self.options.dictRemoveFile = "D";
 
     // load already saved files
     $.get('/upload', function(data) {
@@ -45,6 +45,11 @@ Dropzone.options.myDropzone = {
     self.on("queuecomplete", function(progress) {
       $('.meter').delay(999).slideUp(999);
     });
+
+    self.on("success", function(file, resp){
+      console.log(file);
+      console.log(resp);
+    })
 
     // On removing file
     self.on("removedfile", function(file) {
